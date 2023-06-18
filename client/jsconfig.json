@@ -1,0 +1,7 @@
+{ 
+    "compilerOptions": {
+        "baseUrl": "src",
+        "lib": ["ES6"]
+    },
+    "include": ["src"]
+}

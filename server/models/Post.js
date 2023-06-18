@@ -16,14 +16,14 @@ const PostSchema = new mongoose.Schema(
         },
         location: String,
         description: String,
-        picturePath: Number,
+        picturePath: String,
         userPicturePath: String,
         likes: {
             type: Map,
             of: Boolean, //check if the user id exists
         },
         comments: {
-            types: Array,
+            type: Array,
             default: [],
         }
 

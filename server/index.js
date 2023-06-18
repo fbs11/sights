@@ -15,7 +15,11 @@ import authRoutes from "./routes/auth.js";
 import { verifyToken } from "./middleware/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
-import {createPost} from "./controllers/posts.js"
+import {createPost} from "./controllers/posts.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import {users, posts} from "./data/index.js";
+
 
 // CONFIGURATION
 
@@ -25,6 +29,7 @@ dotenv.config();
 
 const app = express();
 app.use(express.json);
+app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({policy: "cross-origin"}));
 app.use(morgan("common"));
 app.use(bodyParser.json({limit: "25mb", extended: true}));
@@ -62,6 +67,11 @@ mongoose.connect(process.env.MONGO_URL, {
     useUnifiedTopology: true,
 }).then(() => {
     app.listen(PORT, () => console.log (`Server Port: ${PORT}`));
+
+    // ONLY ADD ONE TIME
+    //User.insertMany(users);
+    //Post.insertMany(posts);
+
 }).catch((error) => console.log(`${error} could not connect`));
 
 
