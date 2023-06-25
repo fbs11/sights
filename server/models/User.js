@@ -29,8 +29,7 @@ const UserSchema = new mongoose.Schema(
         picturePath: {
             type: String,
             default: "",
-            min: 2,
-            max: 30,
+            
         },
         friends: {
             type: Array,

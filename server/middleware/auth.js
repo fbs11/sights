@@ -7,7 +7,7 @@ export const verifyToken = async (req, res, next) => {   //"next" allows the fun
         if (!token) return res.status(403).send("Access Denied");
 
         if (token.startsWith("Bearer ")) {  //the token will be placed after Bearer so we take all of it
-            token = token.slice(7, token.length).trimLeft
+            token = token.slice(7, token.length).trimLeft();
         }
 
         const verified = jwt.verify(token, process.env.JWT_SECRET);

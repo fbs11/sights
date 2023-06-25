@@ -92,7 +92,7 @@ const Navbar = () => {
                             width:"3rem"
                         },
                         "& .MuiSelect-select:focus": {
-                            backkgroundColor: neutralLight
+                            backgroundColor: neutralLight
                         }
                     }}
                     input={<InputBase />}
