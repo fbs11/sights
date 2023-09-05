@@ -1,16 +1,14 @@
 import express from "express";
-import {getFeedPosts,getUserPosts,likePost} from "../controllers/posts.js";
+import { getFeedPosts, getUserPosts, likePost } from "../controllers/posts.js";
 import { verifyToken } from "../middleware/auth.js";
 
 const router = express.Router();
 
-// READ
+/* READ */
+router.get("/", verifyToken, getFeedPosts);
+router.get("/:userId/posts", verifyToken, getUserPosts);
 
-router.get("/", verifyToken, getFeedPosts); //take everypost from the database
-router.get("/:userId/posts", verifyToken, getUserPosts); //only show that user posts
-
-// UPDATE
-
-router.patch("/:id/like", verifyToken, likePost); //like and unlike the post
+/* UPDATE */
+router.patch("/:id/like", verifyToken, likePost);
 
 export default router;
